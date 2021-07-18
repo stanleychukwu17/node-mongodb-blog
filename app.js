@@ -14,7 +14,7 @@ app.get('/', function(req, res) {
 
 // for about page
 app.get('/about-us', function(req, res) {
-    res.send('<p>About us</p>');
+    res.render('about', {'title':'john'});
 });
 
 // for new blog page

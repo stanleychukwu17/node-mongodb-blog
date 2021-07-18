@@ -6,3 +6,10 @@
     border-image: linear-gradient(to top, #fce055, #256eff) 1 100%;
     border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
 }
+
+
+.abt_header {
+    background-image: linear-gradient(to right, #7ee8fa 0%, #0d324d 74%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
