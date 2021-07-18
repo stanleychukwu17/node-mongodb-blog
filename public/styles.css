@@ -32220,6 +32220,11 @@ video {
   content: none;
 }
 
+.navbar {
+  margin-left: 1rem;
+  margin-right: 1rem
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
