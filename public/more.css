@@ -1,0 +1,8 @@
+.boxer {
+    width: 45%; margin-right: 3%; background-color: white;
+    box-shadow: 0 0 4px rgb(0,0,0, .1), 8px 8px 0 rgba(0,0,0,.05);
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-image: linear-gradient(to top, #fce055, #256eff) 1 100%;
+
+}
