@@ -7,12 +7,31 @@
     <title>New blog on this bratan</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/more.css">
+    <style>
+        .bodman {
+            box-shadow: 0 0 0 rgb(0,0,0, .1), 8px 8px 0 rgba(0,0,0,.05);
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <div class="py-3 px-5">
         <%- include('./partials/header.ejs') %>
-        <div class="mt-20">
-            time to create a new blog
+        <div class="bodman mt-20 py-4 px-7 mx-auto w-2/4 bg-white">
+            <div class="">Create a new blog</div>
+            <div class="">
+                <div class="py-4">
+                    <div class="">Title of blog</div>
+                    <div class=""><input type="text" class="shadow-md"></div>
+                </div>
+                <div class="py-4">
+                    <div class="">Author of blog</div>
+                    <div class=""><input type="text" class="shadow-md"></div>
+                </div>
+                <div class="py-4">
+                    <div class="">Content of blog</div>
+                    <div class=""><input type="text" class="shadow-md"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
