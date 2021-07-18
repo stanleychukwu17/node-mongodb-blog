@@ -1,6 +1,9 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     let john = 'we done finish ohh'
-    console.log(john)
-});
+    window.convertMan = function (arg) {
+        console.log('we are back')
+    }
 
-console.log(john, 'now and see')
+    let amaka = document.querySelectorAll('.amaka')
+    console.log(window.convertMan, amaka, amaka.length)
+});
