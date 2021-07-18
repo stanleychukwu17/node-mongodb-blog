@@ -4,5 +4,5 @@
     border-left-width: 4px;
     border-left-style: solid;
     border-image: linear-gradient(to top, #fce055, #256eff) 1 100%;
-
+    border-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
 }

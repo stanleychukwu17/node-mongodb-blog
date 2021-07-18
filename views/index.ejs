@@ -9,15 +9,7 @@
     <link rel="stylesheet" href="/more.css">
 </head>
 <body class="bg-gray-50">
-    <div class="py-3 px-5">
-        <nav class="flex justify-between">
-            <div class="text-4xl font-bold">Stanleys blog</div>
-            <div class="flex pt-3 font-bold">
-                <div class="navbar "><a href="#">Home page</a></div>
-                <div class="navbar "><a href="#">About page</a></div>
-                <div class="navbar "><a href="#">Create a new blog</a></div>
-            </div>
-        </nav>
+        <%- include('./partials/header.ejs') %>
         <div class="flex flex-wrap my-8">
             <div class="boxer flex-shrink-0 p-3 px-5">
                 <div class="text-2xl">Buhari is the most useless president in this world</div>
@@ -43,6 +35,13 @@
                     Muhammadu Buhari GCFR (born 17 December 1942) is a Nigerian politician who has been president of Nigeria since 2015. Buhari is a retired Nigerian Army Major General and served as military head of state from 1983 to 1985, after taking power in a military coup d'état.[2][3]
                     The term Buharism is ascribed to the authoritarian policies of his military regime.[4][5] Buhari has said that he takes responsibility for anything over which he presided during his military rule, and that he cannot change the past. He has described himself as a "converted democrat".[6]
                 </div>
+                <div class="mt-3">
+                    <button class="flex p-2 px-3 bg-blue-500 text-white shadow rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg> <p class="ml-2 relative ">Delete</p>
+                    </button>
+                </div>
             </div>
             <div class="boxer flex-shrink-0 p-3 px-5">
                 <div class="text-2xl">Buhari is the most useless president in this world</div>
@@ -67,6 +66,13 @@
                 <div class="text-base leading-6">
                     Muhammadu Buhari GCFR (born 17 December 1942) is a Nigerian politician who has been president of Nigeria since 2015. Buhari is a retired Nigerian Army Major General and served as military head of state from 1983 to 1985, after taking power in a military coup d'état.[2][3]
                     The term Buharism is ascribed to the authoritarian policies of his military regime.[4][5] Buhari has said that he takes responsibility for anything over which he presided during his military rule, and that he cannot change the past. He has described himself as a "converted democrat".[6]
+                </div>
+                <div class="mt-3">
+                    <button class="flex p-2 px-3 bg-blue-500 text-white shadow rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg> <p class="ml-2 relative ">Delete</p>
+                    </button>
                 </div>
             </div>
         </div>
