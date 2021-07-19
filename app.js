@@ -17,7 +17,7 @@ app.get('/about-us', function(req, res) {
     res.render('about', {'title':'john'});
 });
 
-// for new blog page
+// for new blog page-11
 app.get('/new-blog', function(req, res) {
     res.render('newBlog', {'title':'john'});
 });
