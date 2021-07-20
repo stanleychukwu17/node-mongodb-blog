@@ -3,6 +3,7 @@ const app = express()
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
+app.use(express.json());
 
 app.listen(8080);
 
@@ -20,4 +21,10 @@ app.get('/about-us', function(req, res) {
 // for new blog page-11
 app.get('/new-blog', function(req, res) {
     res.render('newBlog', {'title':'john'});
+});
+
+// for saving of new blog post to our mongodb
+app.post('/new-blog-post', function(req, res) {
+    console.log(req.body, req.params, 'request json');
+    res.json({'msg':'okay'})
 });

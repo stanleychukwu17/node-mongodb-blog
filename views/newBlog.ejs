@@ -29,18 +29,18 @@
             <div class="">
                 <div class="py-4">
                     <div class="text-lg font-bold">Title of blog</div>
-                    <div class=""><input type="text" class="inpCls w-3/4 mt-2"></div>
+                    <div class=""><input type="text" class="inpCls w-3/4 mt-2" id="title"></div>
                 </div>
                 <div class="py-4">
                     <div class="text-lg font-bold">Author of blog</div>
-                    <div class=""><input type="text" class="inpCls w-3/4 mt-2"></div>
+                    <div class=""><input type="text" class="inpCls w-3/4 mt-2" id="author"></div>
                 </div>
                 <div class="py-4">
                     <div class="text-lg font-bold">Content of blog</div>
-                    <div class=""><textarea class="inpCls w-3/4 mt-2" cols="30" rows="5"></textarea></div>
+                    <div class=""><textarea class="inpCls w-3/4 mt-2" id="content" cols="30" rows="5"></textarea></div>
                 </div>
                 <div class="py-4">
-                    <button class="flex py-4 px-7 bg-blue-500 text-white shadow-md rounded font-bold">
+                    <button id="submitBtn" class="flex py-4 px-7 bg-blue-500 text-white shadow-md rounded font-bold">
                         <p class="relative ">Save your new blog</p>
                     </button>
                 </div>
@@ -50,7 +50,20 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
+    // for submitting the new blog post
+    document.getElementById('submitBtn').addEventListener('click', function (event) {
+        const title = document.getElementById('title').value,
+            author = document.getElementById('author').value,
+            content = document.getElementById('content').value,
+            snd = {title, author, content};
+
+
+        fetch('http://localhost:8080/new-blog-post', {
+            "method":"POST",
+            "headers": {"Content-Type":"application/json"},
+            "body":JSON.stringify(snd)
+        }).then(re => re.json()).then(re => console.log(re));
+    })
 });
 </script>
 </body>
