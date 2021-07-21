@@ -10,7 +10,7 @@ const UserSchema = mongoose.Schema({
     required: true,
     trim: true,
     index: { unique: true },
-    minlength: 3,
+    minlength: 3
   },
   email: {
     type: String,
@@ -28,16 +28,16 @@ const UserSchema = mongoose.Schema({
     required: true,
     trim: true,
     index: { unique: true },
-    minlength: 8,
+    minlength: 8
   },
   avatar: {
-    type: String,
-  },
+    type: String
+  }
 }, { timestamps: true });
 
 UserSchema.pre('save', async function preSave(next) {
   const user = this;
-  if (!user.isModified('password')) return next();
+  if (!user.isModified('password')) { return next(); }
   try {
     const hash = await bcrypt.hash(user.password, SALT_ROUNDS);
     user.password = hash;
