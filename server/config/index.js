@@ -4,7 +4,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     sitename: 'Development phase',
-    database: {dsn: process.env.DEVELOPMENT_DB_DSN},
+    database: {dsn: process.env.DEVELOPMENT_DB_DSN}
   },
   production: {
     sitename: 'Production phase',
