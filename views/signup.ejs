@@ -17,20 +17,53 @@
     <div class="py-3 px-5">
         <%- include('./partials/header.ejs') %>
 
-        <div class="mt-20 mx-auto w-3/5 text-3xl">Already a user, then Sign in</div>
-        <div class="mt-5 mx-auto w-3/5 bg-white p-5 flex justify-between">
+        <div class="mt-20 mx-auto w-3/4 text-3xl">Already a user, then Sign in</div>
+        <div class="mt-5 mx-auto w-3/4 bg-white p-5 pl-10 flex justify-around">
             <div class="LogBamCvr w-2/4">
-                <div class="mt-5 mb-7"><p class="text-lg font-bold">Username</p> <p><input class="inpCls w-3/4 mt-2" type="text" value=""/></p></div>
-                <div class="mt-5 mb-7"><p class="text-lg font-bold">Password</p> <p><input class="inpCls w-3/4 mt-2" type="password" value=""/></p></div>
-                <div class="LogDBtn"><button class="py-3 px-7 bg-blue-500 text-white shadow-md rounded font-bold">Done, Sign-in</button></div>
+                <div class="mt-5 mb-7"><p class="text-lg font-bold">Username</p> <p><input id="Luser" class="inpCls w-3/4 mt-2" type="text" value=""/></p></div>
+                <div class="mt-5 mb-7"><p class="text-lg font-bold">Password</p> <p><input id="Lpass" class="inpCls w-3/4 mt-2" type="password" value=""/></p></div>
+                <div class="LogDBtn"><button id="loginBtn" class="py-3 px-7 bg-blue-500 text-white shadow-md rounded font-bold">Done, Sign-in</button></div>
             </div>
             <div class="LogBamCvr w-2/4">
-                <div class="mt-5 mb-7"><p class="text-lg font-bold">New username</p> <p><input class="inpCls w-3/4 mt-2" type="text" value=""/></p></div>
-                <div class="mt-5 mb-7"><p class="text-lg font-bold">New password</p> <p><input class="inpCls w-3/4 mt-2" type="password" value=""/></p></div>
-                <div class="LogDBtn"><button class="py-3 px-7 bg-blue-500 text-white shadow-md rounded font-bold">Register</button></div>
+                <div class="mt-5 mb-7"><p class="text-lg font-bold">New username</p> <p><input id="Nuser" class="inpCls w-3/4 mt-2" type="text" value="stanley"/></p></div>
+                <div class="mt-5 mb-7"><p class="text-lg font-bold">Your email</p> <p><input id="Nemail" class="inpCls w-3/4 mt-2" type="text" value="stan@gmail.com"/></p></div>
+                <div class="mt-5 mb-7"><p class="text-lg font-bold">New password</p> <p><input id="Npass" class="inpCls w-3/4 mt-2" type="password" value=""/></p></div>
+                <div class="LogDBtn"><button id="newBtn" class="py-3 px-7 bg-blue-500 text-white shadow-md rounded font-bold">Register</button></div>
             </div>
         </div>
 
     </div>
+
+<script>
+    // for registering or loggin into a user account
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // for login
+        document.getElementById('loginBtn').addEventListener('click', function (event) {
+            const Luser = document.getElementById('Luser').value, Lpass = document.getElementById('Lpass').value, snd = {Luser, Lpass};
+
+            fetch('http://localhost:8080/new-blog-post', {
+                "method":"POST",
+                "headers": {"Content-Type":"application/json"},
+                "body":JSON.stringify(snd)
+            }).then(re => re.json()).then(re => console.log(re));
+        })
+
+
+        // for registering
+        document.getElementById('newBtn').addEventListener('click', function (event) {
+            const title = document.getElementById('title').value,
+                author = document.getElementById('author').value,
+                content = document.getElementById('content').value,
+                snd = {title, author, content};
+
+
+            fetch('http://localhost:8080/new-blog-post', {
+                "method":"POST",
+                "headers": {"Content-Type":"application/json"},
+                "body":JSON.stringify(snd)
+            }).then(re => re.json()).then(re => console.log(re));
+        })
+    });
+</script>
 </body>
 </html>

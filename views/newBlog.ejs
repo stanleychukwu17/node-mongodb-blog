@@ -49,22 +49,22 @@
     </div>
 
 <script>
-window.addEventListener('DOMContentLoaded', (event) => {
-    // for submitting the new blog post
-    document.getElementById('submitBtn').addEventListener('click', function (event) {
-        const title = document.getElementById('title').value,
-            author = document.getElementById('author').value,
-            content = document.getElementById('content').value,
-            snd = {title, author, content};
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // for submitting the new blog post
+        document.getElementById('submitBtn').addEventListener('click', function (event) {
+            const title = document.getElementById('title').value,
+                author = document.getElementById('author').value,
+                content = document.getElementById('content').value,
+                snd = {title, author, content};
 
 
-        fetch('http://localhost:8080/new-blog-post', {
-            "method":"POST",
-            "headers": {"Content-Type":"application/json"},
-            "body":JSON.stringify(snd)
-        }).then(re => re.json()).then(re => console.log(re));
-    })
-});
+            fetch('http://localhost:8080/new-blog-post', {
+                "method":"POST",
+                "headers": {"Content-Type":"application/json"},
+                "body":JSON.stringify(snd)
+            }).then(re => re.json()).then(re => console.log(re));
+        })
+    });
 </script>
 </body>
 </html>
