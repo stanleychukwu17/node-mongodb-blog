@@ -25,6 +25,7 @@ app.get('/new-blog', function(req, res) {
 
 // for saving of new blog post to our mongodb
 app.post('/new-blog-post', function(req, res) {
-    console.log(req.body, req.params, 'request json');
     res.json({'msg':'okay'})
 });
+
+// for the login-and logout page
