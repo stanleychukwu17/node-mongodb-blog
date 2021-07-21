@@ -34,7 +34,7 @@ app.get('/users/signup-and-login', function(req, res) {
 });
 
 // for registering the new user received to our database
-app.get('/users/register-user', function(req, res) {
+app.post('/users/register-user', function(req, res) {
     console.log(req.body);
     res.json({'msg':'okay'});
 });

@@ -41,26 +41,20 @@
         document.getElementById('loginBtn').addEventListener('click', function (event) {
             const Luser = document.getElementById('Luser').value, Lpass = document.getElementById('Lpass').value, snd = {Luser, Lpass};
 
-            fetch('http://localhost:8080/new-blog-post', {
-                "method":"POST",
-                "headers": {"Content-Type":"application/json"},
-                "body":JSON.stringify(snd)
+            fetch('http://localhost:8080/', {
+                "method":"POST", "headers": {"Content-Type":"application/json"}, "body":JSON.stringify(snd)
             }).then(re => re.json()).then(re => console.log(re));
         })
 
 
         // for registering
         document.getElementById('newBtn').addEventListener('click', function (event) {
-            const title = document.getElementById('title').value,
-                author = document.getElementById('author').value,
-                content = document.getElementById('content').value,
-                snd = {title, author, content};
+            const Nuser = document.getElementById('Nuser').value, Npass = document.getElementById('Npass').value,
+                Nemail = document.getElementById('Nemail').value, snd = {Nuser, Npass, Nemail};
 
-
-            fetch('http://localhost:8080/new-blog-post', {
-                "method":"POST",
-                "headers": {"Content-Type":"application/json"},
-                "body":JSON.stringify(snd)
+            console.log(snd)
+            fetch('http://localhost:8080/users/register-user', {
+                "method":"POST", "headers": {"Content-Type":"application/json"}, "body":JSON.stringify(snd)
             }).then(re => re.json()).then(re => console.log(re));
         })
     });
