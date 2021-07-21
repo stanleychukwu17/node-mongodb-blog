@@ -29,3 +29,6 @@ app.post('/new-blog-post', function(req, res) {
 });
 
 // for the login-and logout page
+app.get('/signup-and-login', function(req, res) {
+    res.render('signup', {'title':'john'});
+});
