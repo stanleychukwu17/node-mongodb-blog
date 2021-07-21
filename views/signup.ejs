@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up or Login into your account</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/more.css">
+</head>
+<body class="bg-gray-50">
+    <div class="py-3 px-5">
+        <%- include('./partials/header.ejs') %>
+        <div class="mt-20">
+            <div class="it_fl LogBamCvr">
+                <div class="LogDkn">Already a user, then Sign in</div>
+                <div>
+                    <div class="LogDinp"><p>Username</p> <p><input type="text" value=""/></p></div>
+                    <div class="LogDinp">
+                        <p>Password</p>
+                        <p>
+                            <input type="password" value=""/>
+                        </p>
+                    </div>
+                    <div class="LogDBtn"><button class="button_blue">Done, Sign-in</button></div>
+                </div>
+            </div>
+            <div class="it_fl LogBamCvr">
+                <div class="LogDkn">New user, then join our community</div>
+                <div>
+                    <div class="LogDinp"><p>Enter your username</p> <p><input type="text" value=""/></p></div>
+                    <div class="LogDinp"><p>New password</p> <p><input type="password" value=""/></p></div>
+                    <div class="LogDBtn"><button class="button_blue">Register</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
