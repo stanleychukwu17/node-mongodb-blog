@@ -5,3 +5,7 @@
 //  const app = require('../server/app')(config);
  const db = require('./db');
 
+
+ db.connect(config.database.dsn)
+ .then(() => {})
+ .catch((err) => {});
