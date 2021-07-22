@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 
-const connect = require('./server/lib/connect')
 const db = require('./server/lib/db');
 const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
+const userRoutes = require('./server/routes/userRoutes')
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
@@ -37,13 +37,4 @@ app.post('/new-blog-post', function(req, res) {
     res.json({'msg':'okay'})
 });
 
-// for the login-and logout page
-app.get('/users/signup-and-login', function(req, res) {
-    res.render('signup', {'title':'john'});
-});
-
-// for registering the new user received to our database
-app.post('/users/register-user', function(req, res) {
-    // console.log(req.body);
-    res.json({'msg':'okay'});
-});
+app.use('/users/', userRoutes)
