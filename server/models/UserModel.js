@@ -6,33 +6,18 @@ const SALT_ROUNDS = 12;
 
 const UserSchema = mongoose.Schema({
   username: {
-    type: String,
-    required: true,
-    trim: true,
-    index: { unique: true },
-    minlength: 3
+    type: String, required: true, trim: true, index: {unique: true}, minlength: 3
   },
   email: {
-    type: String,
-    required: true,
-    trim: true,
-    lowercase: true,
-    index: { unique: true },
+    type: String, required: true, trim: true, lowercase: true, index: { unique: true },
     validate: {
-      validator: emailValidator.validate,
-      message: props => `${props.value} is not a valid email address!`,
+      validator: emailValidator.validate, message: props => `${props.value} is not a valid email address!`,
     },
   },
   password: {
-    type: String,
-    required: true,
-    trim: true,
-    index: { unique: true },
-    minlength: 8
+    type: String, required: true, trim: true, index: {unique: true }, minlength: 8
   },
-  avatar: {
-    type: String
-  }
+  avatar: {type: String}
 }, { timestamps: true });
 
 UserSchema.pre('save', async function preSave(next) {
