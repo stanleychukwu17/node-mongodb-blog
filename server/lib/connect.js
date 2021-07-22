@@ -6,4 +6,5 @@
  const db = require('./db');
 
 
- console.log('called connect')
+ console.log(config);
+ console.log('oshoo')
