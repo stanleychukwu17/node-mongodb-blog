@@ -5,6 +5,3 @@
 //  const app = require('../server/app')(config);
  const db = require('./db');
 
-
- console.log(config);
- console.log('oshoo free')
