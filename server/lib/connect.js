@@ -7,4 +7,4 @@
 
 
  console.log(config);
- console.log('oshoo')
+ console.log('oshoo free')
