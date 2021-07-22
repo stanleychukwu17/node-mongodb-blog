@@ -1,12 +1,20 @@
 const express = require('express')
 const app = express()
+
 const connect = require('./server/lib/connect')
+const db = require('./server/lib/db');
+const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 
-app.listen(8080);
+
+//--start-- for connecting to the database & listening on port 8080
+ db.connect(config.database.dsn)
+ .then(() => { app.listen(8080); })
+ .catch((err) => { console.log(err) });
+//--end--
 
 // for home page
 app.get('/', function(req, res) {
