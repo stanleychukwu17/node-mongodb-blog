@@ -20,7 +20,6 @@ router.post('/register-user', function(req, res, next) {
         console.log(err.message, 'cannot read it')
         next(err)
     })
-    res.json({'msg':'okay'});
 });
 
 module.exports = router;
