@@ -23,9 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({mongoUrl: config.database.dsn}),
-    secret: '83938494884abjhdhu',
-    resave: true,
-    saveUninitialized: false
+    secret: '83938494884abjhdhu', resave: true, saveUninitialized: false
 }));
 
 console.log(config.database.dsn);
