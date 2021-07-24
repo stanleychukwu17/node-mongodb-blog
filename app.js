@@ -7,6 +7,7 @@ const MongoStore = new require('connect-mongo');
 const db = require('./server/lib/db');
 const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
 const userRoutes = require('./server/routes/userRoutes')
+const auth = require('./server/lib/auth')
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
@@ -20,6 +21,8 @@ app.use(express.json());
 }).catch((err) => { console.log(err) });
 //--end--
 
+
+//--start-- for creating of session for the current user and the authentication of the user anytime they login
 app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({mongoUrl: config.database.dsn}),
@@ -30,6 +33,9 @@ app.use(function(req, res, next) {
     req.session.visits = req.session.visits ? req.session.visits + 1 : 1;
     next();
 })
+
+
+//--end--
 
 
 // for home page
