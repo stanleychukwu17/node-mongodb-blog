@@ -15,14 +15,12 @@ router.post('/register-user', function(req, res, next) {
     const user = new UserModel({username, email, password});
 
     user.save().then(re => {
-        res.json(re);
+        res.json({'msg':'okay'});
     }).catch (err => {
-        console.log(err.message, 'cannot read it')
         res.json({'msg':'bad', 'cause':err.message});
     })
 });
 
-console.log('see requyest');
 // for Logging into a user account
 router.post('/login-this-user', (req, res, next) => {
     passport.authenticate('local', function (err, user, info) {     
