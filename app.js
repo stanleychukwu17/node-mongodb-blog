@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const MongoStore = new require('connect-mongo')
-const mongoose = require('mongoose')
+const session = require('express-session');
+const MongoStore = new require('connect-mongo').default;
 
 const db = require('./server/lib/db');
 const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
@@ -21,6 +20,13 @@ app.use(express.json());
 }).catch((err) => { console.log(err) });
 //--end--
 
+app.use(cookieParser());
+app.use(session({
+    secret: '83938494884abjhdhu',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({ }),
+}));
 
 
 // for home page
