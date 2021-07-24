@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = new require('connect-mongo')
 const mongoose = require('mongoose')
 
 const db = require('./server/lib/db');
@@ -16,9 +16,12 @@ app.use(express.json());
 
 //--start-- for connecting to the database & listening on port 8080
  db.connect(config.database.dsn)
- .then(() => { app.listen(8080); })
- .catch((err) => { console.log(err) });
+ .then(() => {
+    app.listen(8080);
+}).catch((err) => { console.log(err) });
 //--end--
+
+
 
 // for home page
 app.get('/', function(req, res) {
