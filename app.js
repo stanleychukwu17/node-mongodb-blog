@@ -28,7 +28,6 @@ app.use(session({
 
 app.use(function(req, res, next) {
     req.session.visits = req.session.visits ? req.session.visits + 1 : 1;
-    console.log(req.session);
     next();
 })
 
