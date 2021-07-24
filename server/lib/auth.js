@@ -5,6 +5,7 @@ module.exports = {
     session: passport.session(),
     setUser: (req, res, next) => {
         res.locals.user = req.user;
+        console.log('called', req.user);
         return next();
     }
 }

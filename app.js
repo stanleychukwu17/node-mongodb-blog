@@ -34,7 +34,13 @@ app.use(function(req, res, next) {
     next();
 })
 
-
+app.use(auth.initialize);
+app.use(auth.session);
+app.use(auth.setUser);
+// app.use(function(req, res, next) {
+//     console.log(auth.user);
+//     next();
+// })
 //--end--
 
 
