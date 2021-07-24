@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const UserModel = require('../models/UserModel')
 
 // for the login-and logout page
@@ -14,12 +15,17 @@ router.post('/register-user', function(req, res, next) {
     const user = new UserModel({username, email, password});
 
     user.save().then(re => {
-        console.log('saved to the database')
         res.json(re);
     }).catch (err => {
         console.log(err.message, 'cannot read it')
         next(err)
     })
+});
+
+// for Logging into a user account
+router.post('/login-this-user', passport.authenticate('local'), (req, res, next) => {
+    console.log('went through now')
+    res.json({'msg':'okay'});
 });
 
 module.exports = router;

@@ -41,7 +41,7 @@
         document.getElementById('loginBtn').addEventListener('click', function (event) {
             const Luser = document.getElementById('Luser').value, Lpass = document.getElementById('Lpass').value, snd = {Luser, Lpass};
 
-            fetch('http://localhost:8080/', {
+            fetch('http://localhost:8080/users/login-this-user', {
                 "method":"POST", "headers": {"Content-Type":"application/json"}, "body":JSON.stringify(snd)
             }).then(re => re.json()).then(re => console.log(re));
         })
