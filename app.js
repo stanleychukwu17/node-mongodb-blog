@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
-const MongoStore = new require('connect-mongo').default;
+const MongoStore = new require('connect-mongo');
 
 const db = require('./server/lib/db');
 const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
@@ -22,11 +22,13 @@ app.use(express.json());
 
 app.use(cookieParser());
 app.use(session({
+    store: MongoStore.create({mongoUrl: config.database.dsn}),
     secret: '83938494884abjhdhu',
     resave: true,
-    saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    saveUninitialized: false
 }));
+
+console.log(config.database.dsn);
 
 
 // for home page
