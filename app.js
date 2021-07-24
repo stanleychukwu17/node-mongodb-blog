@@ -26,7 +26,10 @@ app.use(session({
     secret: '83938494884abjhdhu', resave: true, saveUninitialized: false
 }));
 
-console.log(config.database.dsn);
+app.use(function(req, res, next) {
+    console.log('e dey work');
+    next();
+})
 
 
 // for home page
