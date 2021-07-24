@@ -3,6 +3,7 @@ const app = express()
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
 const MongoStore = new require('connect-mongo');
+const flash = require('express-flash')
 
 const db = require('./server/lib/db');
 const config = require('./server/config/index')[process.env.NODE_ENV || 'development'];
@@ -12,6 +13,7 @@ const auth = require('./server/lib/auth')
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
+app.use(flash());
 
 
 //--start-- for connecting to the database & listening on port 8080
@@ -26,21 +28,17 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({mongoUrl: config.database.dsn}),
-    secret: '83938494884abjhdhu', resave: true, saveUninitialized: false
+    secret: '83938494884abjhdhu', resave: false, saveUninitialized: false
 }));
-
-app.use(function(req, res, next) {
-    req.session.visits = req.session.visits ? req.session.visits + 1 : 1;
-    next();
-})
 
 app.use(auth.initialize);
 app.use(auth.session);
-app.use(auth.setUser);
-// app.use(function(req, res, next) {
-//     console.log(auth.user);
-//     next();
-// })
+
+app.use(function(req, res, next) {
+    console.log(req.user, req.isAuthenticated())
+    req.session.visits = req.session.visits ? req.session.visits + 1 : 1;
+    next();
+})
 //--end--
 
 

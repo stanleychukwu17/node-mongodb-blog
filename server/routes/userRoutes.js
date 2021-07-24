@@ -21,23 +21,22 @@ router.post('/register-user', function(req, res, next) {
     })
 });
 
+function CheckIfUserLoggedIn(req, res, next) {
+    // console.log('middleware called');
+    // console.log(req, res, 'see user last');
+    next();
+}
+
 // for Logging into a user account
-router.post('/login-this-user', (req, res, next) => {
-    passport.authenticate('local', function (err, user, info) {     
-        console.log('running now', user, info);
- 
-        if (err) {
-            return res.status(401).json(err);
-        }
-        if (user) {
-            const token = user.generateJwt();
-            return res.status(200).json({
-                "token": token
-            });
-        } else {
-            res.status(401).json(info);
-        }
-    })(req, res, next)
-});
+router.post('/login-this-user',
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }),
+    (req, res, next) => {
+        console.log('done');
+    }
+);
 
 module.exports = router;
