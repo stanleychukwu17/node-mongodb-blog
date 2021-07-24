@@ -18,14 +18,28 @@ router.post('/register-user', function(req, res, next) {
         res.json(re);
     }).catch (err => {
         console.log(err.message, 'cannot read it')
-        next(err)
+        res.json({'msg':'bad', 'cause':err.message});
     })
 });
 
+console.log('see requyest');
 // for Logging into a user account
-router.post('/login-this-user', passport.authenticate('local'), (req, res, next) => {
-    console.log('went through now')
-    res.json({'msg':'okay'});
+router.post('/login-this-user', (req, res, next) => {
+    passport.authenticate('local', function (err, user, info) {     
+        console.log('running now', user, info);
+ 
+        if (err) {
+            return res.status(401).json(err);
+        }
+        if (user) {
+            const token = user.generateJwt();
+            return res.status(200).json({
+                "token": token
+            });
+        } else {
+            res.status(401).json(info);
+        }
+    })(req, res, next)
 });
 
 module.exports = router;

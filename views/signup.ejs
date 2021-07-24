@@ -43,9 +43,8 @@
 
             fetch('http://localhost:8080/users/login-this-user', {
                 "method":"POST", "headers": {"Content-Type":"application/json"}, "body":JSON.stringify(snd)
-            }).then(re => re.json()).then(re => console.log(re));
+            }).then(re => {console.log(re); return re;}).then(re => console.log(re));
         })
-
 
         // for registering
         document.getElementById('newBtn').addEventListener('click', function (event) {

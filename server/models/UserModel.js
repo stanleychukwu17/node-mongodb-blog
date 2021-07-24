@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema({
     },
   },
   password: {
-    type: String, required: true, trim: true, index: {unique: true }, minlength: 8
+    type: String, required: true, trim: true, index: {unique: true }, minlength: 3
   },
   avatar: {type: String}
 }, { timestamps: true });
